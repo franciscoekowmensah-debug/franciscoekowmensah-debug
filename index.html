@@ -559,7 +559,7 @@
         // Update 3D particle color for light theme
         if (material) {
           material.color.setHex(0x4338ca);
-          material.opacity = 0.35;
+          material.opacity = 0.55;
         }
       } else {
         document.body.removeAttribute('data-theme');
@@ -568,7 +568,7 @@
         // Reset 3D particle color for dark theme
         if (material) {
           material.color.setHex(0xffffff);
-          material.opacity = 0.65;
+          material.opacity = 0.85;
         }
       }
     });
@@ -598,31 +598,34 @@
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    const particlesCount = 1200;
+    // INCREASED: Doubled particle count from 1200 to 2500 for a denser background
+    const particlesCount = 2500;
     const positions = new Float32Array(particlesCount * 3);
     const colors = new Float32Array(particlesCount * 3);
 
     const baseColor = new THREE.Color('#6366f1');
 
     for (let i = 0; i < particlesCount * 3; i += 3) {
-      positions[i] = (Math.random() - 0.5) * 15;
-      positions[i + 1] = (Math.random() - 0.5) * 15;
-      positions[i + 2] = (Math.random() - 0.5) * 15;
+      // Packed slightly tighter across the viewport space
+      positions[i] = (Math.random() - 0.5) * 12;
+      positions[i + 1] = (Math.random() - 0.5) * 12;
+      positions[i + 2] = (Math.random() - 0.5) * 12;
 
-      colors[i] = baseColor.r + (Math.random() - 0.5) * 0.2;
-      colors[i + 1] = baseColor.g + (Math.random() - 0.5) * 0.2;
-      colors[i + 2] = baseColor.b + (Math.random() - 0.5) * 0.2;
+      colors[i] = baseColor.r + (Math.random() - 0.5) * 0.25;
+      colors[i + 1] = baseColor.g + (Math.random() - 0.5) * 0.25;
+      colors[i + 2] = baseColor.b + (Math.random() - 0.5) * 0.25;
     }
 
     const geometry = new THREE.BufferGeometry();
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
+    // INCREASED: Bumped particle size to 0.05 and default opacity to 0.85 for higher visibility
     const material = new THREE.PointsMaterial({
-      size: 0.035,
+      size: 0.05,
       vertexColors: true,
       transparent: true,
-      opacity: 0.65,
+      opacity: 0.85,
       blending: THREE.AdditiveBlending
     });
 
@@ -646,11 +649,12 @@
     function animateWebGL() {
       const elapsedTime = clock.getElapsedTime();
 
-      targetX = mouseX * 0.5;
-      targetY = mouseY * 0.5;
+      // INCREASED: Strengthened cursor responsiveness multiplier from 0.5 to 1.2
+      targetX = mouseX * 1.2;
+      targetY = mouseY * 1.2;
 
-      particlesMesh.rotation.y = elapsedTime * 0.05 + targetX * 0.3;
-      particlesMesh.rotation.x = -elapsedTime * 0.03 + targetY * 0.3;
+      particlesMesh.rotation.y = elapsedTime * 0.04 + targetX * 0.45;
+      particlesMesh.rotation.x = -elapsedTime * 0.03 + targetY * 0.45;
 
       renderer.render(scene, camera);
       requestAnimationFrame(animateWebGL);
