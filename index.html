@@ -546,10 +546,10 @@
             LinkedIn
           </a>
 
-          <a href="https://github.com/ekowcisco" target="_blank" 
+          <a href="https://github.com/franciscoekowmensah-debug" target="_blank" 
             class="glass-card px-6 py-3 rounded-2xl flex items-center gap-2 border text-[var(--text-main)] hover:text-indigo-500 hover:border-indigo-500/50 hover:shadow-[0_0_20px_rgba(99,102,241,0.25)] transition-all duration-300 hover:-translate-y-1">
             <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
-            GitHub (@ekowcisco)
+            GitHub (@franciscoekowmensah-debug)
           </a>
 
           <a href="https://x.com/francisco_ekow" target="_blank" 
@@ -574,9 +574,7 @@
   </main>
 
   <script>
-    // -------------------------------------------------------------------
     // Theme Switcher Logic
-    // -------------------------------------------------------------------
     const themeToggleBtn = document.getElementById('theme-toggle');
     const themeText = document.getElementById('theme-text');
     const themeIcon = document.getElementById('theme-icon');
@@ -605,9 +603,7 @@
       }
     });
 
-    // -------------------------------------------------------------------
     // Smooth Scroll with Lenis
-    // -------------------------------------------------------------------
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -619,9 +615,7 @@
     }
     requestAnimationFrame(raf);
 
-    // -------------------------------------------------------------------
     // Three.js Interactive WebGL Background
-    // -------------------------------------------------------------------
     const canvas = document.querySelector('#webgl-canvas');
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -699,9 +693,7 @@
       renderer.setSize(window.innerWidth, window.innerHeight);
     });
 
-    // -------------------------------------------------------------------
     // GSAP ScrollTrigger Animations
-    // -------------------------------------------------------------------
     gsap.registerPlugin(ScrollTrigger);
 
     gsap.from('.hero-anim', {
